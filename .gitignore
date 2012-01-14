@@ -1,0 +1,32 @@
+# Node.js with Express and Stlyus
+public/css/*.css
+/.monitor
+
+# Eclipse
+/.project
+/.settings
+/.buildpath
+
+# Windows
+Thumbs.db
+
+# Ignore this in Clock Harness projects because it is created by the build system.
+/Config/vhost.conf
+
+# Vim
+.*.sw[a-z]
+*.un~i
+tags
+
+# OsX
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# nodejs npm modules
+/node_modules
+
+# Cake
+.cake_task_cache
