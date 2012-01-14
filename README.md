@@ -25,7 +25,7 @@ console.log(serviceLocator.foobar); // bar
 serviceLocator.register(logger, console);
 
 serviceLocator.logger.log('Hello world'); // Hello world
-```js
+```
 
 ## Credits
 [Paul Serby](https://github.com/serby/)
