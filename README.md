@@ -16,7 +16,7 @@ Register your functions, objects, string etc using register().
 Once registered with the service locator there is no way to change it.
 
 ```js
-var serviceLocator = ServiceLocator.createServiceLocator();
+var serviceLocator = require('service-locator').createServiceLocator();
 var foo = 'bar';
 serviceLocator.register('foobar', foo);
 
