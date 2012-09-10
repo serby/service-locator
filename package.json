@@ -9,8 +9,8 @@
 	"dependencies": {
 	},
 	"devDependencies": {
-		"mocha": "0.3.6",
-		"should": "0.5.0"
+		"mocha": "*",
+		"should": "*"
 	},
 	"keywords": ["string"],
 	"repository": "git://github.com/serby/service-locator",
@@ -19,5 +19,5 @@
 		"test": "mocha -r should -R spec",
 		"prepublish" : "npm prune"
 	},
-	"engines": { "node": ">= 0.4.6 < 0.7.0" }
+	"engines": { "node": ">= 0.4.6" }
 }
