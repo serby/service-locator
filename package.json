@@ -1,7 +1,7 @@
 {
 	"name": "service-locator",
 	"description": "service-locator helps keep your system decoupled by providing a central location where your application information can be found by other parts of you application.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": "Paul Serby <paul.serby@clock.co.uk>",
 	"contributors": [
 		{ "name": "Paul Serby", "email": "paul.serby@clock.co.uk" }
@@ -16,7 +16,7 @@
 	"repository": "git://github.com/serby/service-locator",
 	"main": "index",
 	"scripts": {
-		"test": "mocha -r should -R spec",
+		"test": "node_modules/.bin/mocha -r should -R spec",
 		"prepublish" : "npm prune"
 	},
 	"engines": { "node": ">= 0.4.6" }
