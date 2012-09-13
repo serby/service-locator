@@ -22,7 +22,7 @@ serviceLocator.register('foobar', foo);
 
 console.log(serviceLocator.foobar); // bar
 
-serviceLocator.register(logger, console);
+serviceLocator.register('logger', console);
 
 serviceLocator.logger.log('Hello world'); // Hello world
 ```
