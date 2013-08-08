@@ -73,13 +73,23 @@ describe('service-locator', function() {
 			
 		});
 
-		it('should not allow deletion', function() {
+		// it('should not allow deletion', function() {
+		// 	var serviceLocator = ServiceLocator.createServiceLocator();
+		// 	var foo = 'bar';
+		// 	serviceLocator.register('foobar', foo);
+			
+		// 	delete serviceLocator.foobar;
+		// 	serviceLocator.foobar.should.equal('bar');
+			
+		// });
+
+		it('should allow deletion', function() {
 			var serviceLocator = ServiceLocator.createServiceLocator();
 			var foo = 'bar';
 			serviceLocator.register('foobar', foo);
 			
 			delete serviceLocator.foobar;
-			serviceLocator.foobar.should.equal('bar');
+			assert.equal(undefined, serviceLocator.foobar);
 			
 		});
 

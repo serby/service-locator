@@ -32,7 +32,7 @@ module.exports.createServiceLocator = function() {
 
 		Object.defineProperty(self, name, {
 			get: function() { return service; },
-			configurable: false,
+			configurable: true,
 			set: function(value) { throw new 
 				Error('You can not alter a registered service \'' + name + '\''); }
 		});
@@ -40,6 +40,12 @@ module.exports.createServiceLocator = function() {
 		return self;
 	}
 
+	function deregister(name) {
+		delete self[name]
+	}
+
+
+	self.deregister = deregister;
 	self.register = register;
 
 	return self;
