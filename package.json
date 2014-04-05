@@ -6,6 +6,9 @@
 	"contributors": [
 		{ "name": "Paul Serby", "email": "paul.serby@clock.co.uk" }
 	],
+	"publishConfig": {
+	  "registry": "http://registry.npmjs.org"
+	},
 	"dependencies": {
 	},
 	"devDependencies": {
