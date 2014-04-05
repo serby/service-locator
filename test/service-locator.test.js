@@ -1,88 +1,86 @@
-var
-	ServiceLocator = require('../'),
-	assert = require('assert');
+var serviceLocator = require('..')
 
 describe('service-locator', function() {
 
-	describe('#createServiceLocator()', function() {
+	describe('#init', function() {
 
 		it('should return a object with a register function', function() {
-			var serviceLocator = ServiceLocator.createServiceLocator();
-			serviceLocator.register.should.be.a('function');
-		});
+			var sl = serviceLocator()
+			sl.register.should.be.type('function')
+		})
 
 		describe('#register()', function() {
 
 			it('should throw error if no name is given', function() {
-				var serviceLocator = ServiceLocator.createServiceLocator();
+				var sl = serviceLocator();
 				(function() {
-					serviceLocator.register();
-				}).should.throw('You must provide a valid name for this service.');
-			});
+					sl.register()
+				}).should.throw('You must provide a valid name for this service.')
+			})
 
 			it('should throw error if no service is given', function() {
-				var serviceLocator = ServiceLocator.createServiceLocator();
+				var sl = serviceLocator();
 				(function() {
-					serviceLocator.register('Test');
-				}).should.throw('You must provide a valid service for \'Test\'');
-			});
+					sl.register('Test')
+				}).should.throw('You must provide a valid service for \'Test\'')
+			})
 
 			it('should throw error if service is already defined', function() {
-				var serviceLocator = ServiceLocator.createServiceLocator();
-				serviceLocator.register('Test', {});
+				var sl = serviceLocator()
+				sl.register('Test', {});
 
 				(function() {
-					serviceLocator.register('Test', {});
-				}).should.throw('Service \'Test\' already registered');
-			});
+					sl.register('Test', {})
+				}).should.throw('Service \'Test\' already registered')
+			})
 
 			it('should allow function services', function() {
-				var serviceLocator = ServiceLocator.createServiceLocator();
-				
-				serviceLocator.register('createDog', function() {
+				var sl = serviceLocator()
+
+				sl.register('createDog', function() {
 					return {
 						name: 'Dog'
-					};
-				});
+					}
+				})
 
-				serviceLocator.createDog.should.be.a('function');
-				serviceLocator.createDog().name.should.equal('Dog');
-			});
+				sl.createDog.should.be.type('function')
+				sl.createDog().name.should.equal('Dog')
+			})
 
-		});
+		})
 
-	});
+	})
 
 	describe('Registered Services', function() {
 
 		it('should be as defined', function() {
-			var serviceLocator = ServiceLocator.createServiceLocator();
-			var foo = 'bar';
-			serviceLocator.register('foobar', foo);
-			serviceLocator.foobar.should.equal('bar');
-		});
+			var sl = serviceLocator()
+			var foo = 'bar'
+			sl.register('foobar', foo)
+			sl.foobar.should.equal('bar')
+		})
 
 		it('should throw exception if modification is attempted', function() {
-			var serviceLocator = ServiceLocator.createServiceLocator();
-			var foo = 'bar';
-			serviceLocator.register('foobar', foo);
-			
+			var sl = serviceLocator()
+			var foo = 'bar'
+			sl.register('foobar', foo);
+
 			(function() {
-				serviceLocator.foobar = 'cat';
-			}).should.throw('You can not alter a registered service \'foobar\'');
-			
-		});
+				sl.foobar = 'cat'
+			}).should.throw('You can not alter a registered service \'foobar\'')
+
+		})
 
 		it('should not allow deletion', function() {
-			var serviceLocator = ServiceLocator.createServiceLocator();
-			var foo = 'bar';
-			serviceLocator.register('foobar', foo);
-			
-			delete serviceLocator.foobar;
-			serviceLocator.foobar.should.equal('bar');
-			
-		});
+			var sl = serviceLocator()
+			var foo = 'bar'
+			sl.register('foobar', foo)
 
-	});
+			delete sl.foobar
+			sl.foobar.should.equal('bar')
 
-});
+		})
+
+	})
+
+})

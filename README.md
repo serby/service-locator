@@ -1,8 +1,8 @@
-# service-locator - A simple service locator for JavaScript.
+# service-locator - A simple service locator for JavaScript
 
-service-locator helps keep your system decoupled by providing a central
-location where your application information can be found by other parts
-of you application.
+service-locator helps keep your system decoupled by providing a central registry
+where your application information can be found by other parts of you
+application.
 
 [Service Locator on wikipedia](http://en.wikipedia.org/wiki/Service_locator_pattern)
 
@@ -12,19 +12,22 @@ of you application.
 
 ## Usage
 
-Register your functions, objects, string etc using register(). 
+Register your functions, objects, string etc using register().
 Once registered with the service locator there is no way to change it.
 
 ```js
-var serviceLocator = require('service-locator').createServiceLocator();
-var foo = 'bar';
-serviceLocator.register('foobar', foo);
 
-console.log(serviceLocator.foobar); // bar
+var serviceLocator = require('service-locator')()
+  , foo = 'bar'
 
-serviceLocator.register('logger', console);
+serviceLocator.register('foobar', foo)
 
-serviceLocator.logger.log('Hello world'); // Hello world
+console.log(serviceLocator.foobar) // bar
+
+serviceLocator.register('logger', console)
+
+serviceLocator.logger.log('Hello world') // Hello world
+
 ```
 
 ## Credits
