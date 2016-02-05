@@ -1,7 +1,7 @@
 # service-locator - A simple service locator for JavaScript
 
 service-locator helps keep your system decoupled by providing a central registry
-where your application information can be found by other parts of you
+where your application information can be found by other parts of your
 application.
 
 [Service Locator on wikipedia](http://en.wikipedia.org/wiki/Service_locator_pattern)
@@ -12,7 +12,7 @@ application.
 
 ## Usage
 
-Register your functions, objects, string etc using register().
+Register your functions, objects, string etc using `register()`.
 Once registered with the service locator there is no way to change it.
 
 ```js
