@@ -1,5 +1,7 @@
 # service-locator - A simple service locator for JavaScript
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/serby/service-locator.svg)](https://greenkeeper.io/)
+
 service-locator helps keep your system decoupled by providing a central registry
 where your application information can be found by other parts of you
 application.
