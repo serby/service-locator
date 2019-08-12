@@ -7,39 +7,39 @@
  *
  */
 module.exports = function createServiceLocator() {
+  var self = {}
 
-	var self = {}
+  /**
+   * Registers a service and make it read only
+   * @param {String} name To get the service by
+   * @param {Object} service What you want to register
+   */
+  function register(name, service) {
+    if (!name) {
+      throw new Error('You must provide a valid name for this service.')
+    }
 
-	/**
-	 * Registers a service and make it read only
-	 * @param {String} name To get the service by
-	 * @param {Object} service What you want to register
-	 */
-	function register(name, service) {
+    if (self[name] !== undefined) {
+      throw new Error("Service '" + name + "' already registered")
+    }
 
-		if (!name) {
-			throw new Error('You must provide a valid name for this service.')
-		}
+    if (!service) {
+      throw new Error("You must provide a valid service for '" + name + "'")
+    }
 
-		if (self[name] !== undefined) {
-			throw new Error('Service \'' + name + '\' already registered')
-		}
+    Object.defineProperty(self, name, {
+      configurable: false,
+      get: function() {
+        return service
+      },
+      set: function() {
+        throw new Error("You can not alter a registered service '" + name + "'")
+      }
+    })
 
-		if (!service) {
-			throw new Error('You must provide a valid service for \'' + name + '\'')
-		}
+    return self
+  }
 
-		Object.defineProperty(self, name, {
-			configurable: false,
-			get: function() { return service },
-			set: function() {
-				throw new Error('You can not alter a registered service \'' + name + '\'')
-			}
-		})
-
-		return self
-	}
-
-	self.register = register
-	return self
+  self.register = register
+  return self
 }
