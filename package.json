@@ -24,6 +24,7 @@
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-standard": "^4.0.0",
 		"mocha": "^6.2.0",
+		"nyc": "^14.1.1",
 		"prettier": "^1.18.2",
 		"should": "13.2.3"
 	},
@@ -35,8 +36,9 @@
 	"repository": "git://github.com/serby/service-locator",
 	"main": "service-locator",
 	"scripts": {
-		"test": "node_modules/.bin/mocha -r should -R spec",
+		"test": "nyc node_modules/.bin/mocha -r should -R spec",
 		"lint": "eslint -f unix .",
+		"pretest": "npm run lint",
 		"prettier": "prettier --write '**/*.js'",
 		"prepublish": "npm prune"
 	},
