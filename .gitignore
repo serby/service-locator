@@ -30,3 +30,6 @@ Icon?
 
 # Cake
 .cake_task_cache
+
+# Nyc
+.nyc_output

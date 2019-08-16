@@ -4,23 +4,45 @@
 	"version": "1.0.0",
 	"author": "Paul Serby <paul.serby@clock.co.uk>",
 	"contributors": [
-		{ "name": "Paul Serby", "email": "paul.serby@clock.co.uk" }
+		{
+			"name": "Paul Serby",
+			"email": "paul.serby@clock.co.uk"
+		}
 	],
 	"publishConfig": {
-	  "registry": "http://registry.npmjs.org"
+		"registry": "http://registry.npmjs.org"
 	},
-	"dependencies": {
-	},
+	"dependencies": {},
 	"devDependencies": {
-		"mocha": "*",
-		"should": "*"
+		"eslint": "^6.1.0",
+		"eslint-config-prettier": "^6.0.0",
+		"eslint-config-prettier-standard": "^3.0.1",
+		"eslint-config-standard": "^13.0.1",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-node": "^9.1.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-standard": "^4.0.0",
+		"mocha": "^6.2.0",
+		"nyc": "^14.1.1",
+		"prettier": "^1.18.2",
+		"should": "13.2.3"
 	},
-	"keywords": ["service locator", "registry", "decouple"],
+	"keywords": [
+		"service locator",
+		"registry",
+		"decouple"
+	],
 	"repository": "git://github.com/serby/service-locator",
 	"main": "service-locator",
 	"scripts": {
-		"test": "node_modules/.bin/mocha -r should -R spec",
-		"prepublish" : "npm prune"
+		"test": "nyc node_modules/.bin/mocha -r should -R spec",
+		"lint": "eslint -f unix .",
+		"pretest": "npm run lint",
+		"prettier": "prettier --write '**/*.js'",
+		"prepublish": "npm prune"
 	},
-	"engines": { "node": ">= 0.4.6" }
+	"engines": {
+		"node": ">= 8"
+	}
 }
